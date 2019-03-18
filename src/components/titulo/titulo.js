@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const Titulo = props => {
-	return <h1>props.titulo</h1>
-}
+const Titulo = props => <h1>{props.titulo}</h1>;
+
+export default Titulo;
