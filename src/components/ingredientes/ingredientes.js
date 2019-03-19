@@ -13,7 +13,6 @@ class Ingredientes extends React.Component {
 	}
 	
     cambiarCantidades(nuevaCant) {
-        if(this.state.ingredientes[0].cantidad > 0) {
             const ingredientesToUpdate = this.state.ingredientes;
         	const cantOriginal = this.state.ingredientes[0].cantidad;
             console.log(ingredientesToUpdate);
@@ -21,24 +20,25 @@ class Ingredientes extends React.Component {
 
             
             ingredientesToUpdate.map( item => {
-                item.cantidad = (item.cantidad * nuevaCant) / cantOriginal ;
+                item.cantidad = item.proporcion * nuevaCant;
                 return item.cantidad 
             });
             
             this.setState({ ingredientes: ingredientesToUpdate }); 
-        }
     }
-    
+
     handleChange(event) {
-        this.cambiarCantidades(event.target.value);        
-        console.log('Nueva cantidad:' + event.target.value);
+        if(event.target.value > 0) {
+        	this.cambiarCantidades(event.target.value);     
+        }
+        //console.log('Nueva cantidad:' + event.target.value);
     }
 	render() {
 		return(
 			<div className="listaIngredientes">
 			  {
 			  	this.props.ingredientes.map((ingrediente) => {
-			  		return <Ingrediente key={ingrediente.id} handleChange={this.handleChange} nombre={ingrediente.nombre} cantidad={ingrediente.cantidad} proporcion={ingrediente.proporcion} />;
+			  		return <Ingrediente principal={ingrediente.principal} key={ingrediente.id} handleChange={this.handleChange} ingrediente={ingrediente.ingrediente} cantidad={ingrediente.cantidad} proporcion={ingrediente.proporcion} />;
 			  	})
 			  }
 			</div>
