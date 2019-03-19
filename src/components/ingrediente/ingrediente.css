@@ -1,0 +1,17 @@
+.Ingrediente {
+	display: block;
+	width: 450px;
+	padding: 5px;
+	border: 1px solid #e3e3e3;
+	margin: 10px;
+}
+
+.Ingrediente .titulo {
+	display: inline-block;
+}
+
+.Ingrediente input {
+	display: inline-block;
+	width: 50px;
+	margin: 0 5px;
+}
