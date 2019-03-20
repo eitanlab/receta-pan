@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
   	}
   	renderListadoRecetas(){
   		return this.props.recetas.map( item => { 
-  			return <option value={item.id}>{item.nombre}</option>;
+  			return <option key={item.id.toString()} value={item.id}>{item.nombre}</option>;
   		});
 	}
 	handleOnChange(event) {

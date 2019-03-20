@@ -21,8 +21,6 @@ class Ingredientes extends React.Component {
             console.log(this.state.ingredientes);
             //console.log(ingredientesToUpdate);
             //console.log(`Nueva cant harina: ${nuevaCant}`);
-
-            
             ingredientesToUpdate.map( item => {
                 item.cantidad = item.proporcion * nuevaCant;
                 return item.cantidad 
@@ -42,7 +40,7 @@ class Ingredientes extends React.Component {
 			<div className="listaIngredientes">
 			  {
 			  	this.state.ingredientes.map((ingrediente) => {
-			  		return <Ingrediente ingrediente={ingrediente} handleChange={this.handleChange} />;
+			  		return <Ingrediente key={ingrediente.id} ingrediente={ingrediente} handleChange={this.handleChange} />;
 			  	})
 			  }
 			</div>
