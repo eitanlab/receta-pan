@@ -6,33 +6,39 @@ class SearchBar extends React.Component {
     	super(props);
 
     	this.state = { 
-    		receta: ''
+    		receta: '',
+    		value: 1
     	}
-    	this.renderReceta = this.renderReceta.bind(this);
-    	this.handleSearch = this.handleSearch.bind(this);
+    	this.handleOnChange = this.handleOnChange.bind(this);
+    	this.handleOnClick = this.handleOnClick.bind(this);
     	this.renderListadoRecetas = this.renderListadoRecetas.bind(this);
+
   	}
   	renderListadoRecetas(){
   		return this.props.recetas.map( item => { 
-  			return <option value={item.nombre}>{item.nombre}</option>;
+  			return <option value={item.id}>{item.nombre}</option>;
   		});
 	}
-	handleSearch(event) {
-		this.props.buscarReceta(this.state.receta);
+	handleOnChange(event) {
+		this.setState({value: parseInt(event.target.value)});
 		event.preventDefault();
 	}
-	renderReceta(){
-			return <ingredientes />
+	handleOnClick(event) {
+		event.preventDefault();
+		//console.log('searchbar state value: ' + this.state.value);
+		this.props.buscarReceta(this.state.value);
 	}
+	
 
 	render(){
 
 		return(
 			<div className="SearchBar">
 			  <div className="SearchBar-recetas">
-			    <select options="" onChange={this.handleSearch}>
+			    <select value={this.state.value} onChange={this.handleOnChange}>
 			    	{this.renderListadoRecetas()}
 			    </select>
+			    <button type="button" onClick={this.handleOnClick}>Mostrar receta</button>
 			  </div>
 			</div>
 		);

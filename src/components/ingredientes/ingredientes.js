@@ -14,7 +14,6 @@ class Ingredientes extends React.Component {
 	
     cambiarCantidades(nuevaCant) {
             const ingredientesToUpdate = this.state.ingredientes;
-        	const cantOriginal = this.state.ingredientes[0].cantidad;
             console.log(ingredientesToUpdate);
             console.log(`Nueva cant harina: ${nuevaCant}`);
 
@@ -38,7 +37,7 @@ class Ingredientes extends React.Component {
 			<div className="listaIngredientes">
 			  {
 			  	this.props.ingredientes.map((ingrediente) => {
-			  		return <Ingrediente principal={ingrediente.principal} key={ingrediente.id} handleChange={this.handleChange} ingrediente={ingrediente.ingrediente} cantidad={ingrediente.cantidad} proporcion={ingrediente.proporcion} />;
+			  		return <Ingrediente ingrediente={ingrediente} handleChange={this.handleChange} />;
 			  	})
 			  }
 			</div>
