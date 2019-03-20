@@ -11,11 +11,16 @@ class Ingredientes extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.cambiarCantidades = this.cambiarCantidades.bind(this);
 	}
-	
+	componentWillReceiveProps(nextProps) {
+	  if (nextProps.ingredientes !== this.state.ingredientes) {
+	    this.setState({ ingredientes: nextProps.ingredientes });
+	  }
+	}
     cambiarCantidades(nuevaCant) {
             const ingredientesToUpdate = this.state.ingredientes;
-            console.log(ingredientesToUpdate);
-            console.log(`Nueva cant harina: ${nuevaCant}`);
+            console.log(this.state.ingredientes);
+            //console.log(ingredientesToUpdate);
+            //console.log(`Nueva cant harina: ${nuevaCant}`);
 
             
             ingredientesToUpdate.map( item => {
@@ -36,7 +41,7 @@ class Ingredientes extends React.Component {
 		return(
 			<div className="listaIngredientes">
 			  {
-			  	this.props.ingredientes.map((ingrediente) => {
+			  	this.state.ingredientes.map((ingrediente) => {
 			  		return <Ingrediente ingrediente={ingrediente} handleChange={this.handleChange} />;
 			  	})
 			  }

@@ -21,7 +21,6 @@ class SearchBar extends React.Component {
 	}
 	handleOnChange(event) {
 		this.setState({value: parseInt(event.target.value)});
-		event.preventDefault();
 	}
 	handleOnClick(event) {
 		event.preventDefault();
