@@ -1,8 +1,18 @@
+.recetario h1 {
+  display: block;
+}
+
+
 .recetario {
   padding: 20px;
   margin: 30px auto;
-  width: 350px;
+  max-width: 350px;
+  background-color: #f5f5f5;
+  border: 1px solid #fff;
+  border-radius: 10px;
 }
+
+
 
 @keyframes App-logo-spin {
   from {

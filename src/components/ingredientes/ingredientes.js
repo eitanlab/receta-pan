@@ -30,9 +30,10 @@ class Ingredientes extends React.Component {
     }
 
     handleChange(event) {
-        if(event.target.value > 0) {
+       // if(event.target.value > 0) {
         	this.cambiarCantidades(event.target.value);     
-        }
+
+        //}
         //console.log('Nueva cantidad:' + event.target.value);
     }
 	render() {

@@ -62,10 +62,17 @@ class App extends React.Component {
     }
     render() {
         return (
-            <div class="recetario">          
+            <div>
+            <div className="recetario">          
                 <SearchBar buscarReceta={this.buscarReceta} recetas={this.state.recetas}/>
                 <Titulo titulo={this.state.recetas[this.state.recetaElegida].nombre} />
                 <Ingredientes ingredientes={this.state.recetas[this.state.recetaElegida].ingredientes}  />
+            </div>
+            <div className="recetario">          
+                <SearchBar buscarReceta={this.buscarReceta} recetas={this.state.recetas}/>
+                <Titulo titulo={this.state.recetas[this.state.recetaElegida].nombre} />
+                <Ingredientes ingredientes={this.state.recetas[this.state.recetaElegida].ingredientes}  />
+            </div>
             </div>
         );
     }
