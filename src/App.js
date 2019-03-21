@@ -4,6 +4,7 @@ import Titulo from './components/titulo/titulo';
 import Ingredientes from './components/ingredientes/ingredientes';
 import SearchBar from './components/searchbar/searchbar';
 
+
 const receta1 = {
         id: 1,
         nombre: 'Pan',
@@ -53,20 +54,18 @@ class App extends React.Component {
     }
     
     buscarReceta(idReceta) {
-        console.log('idReceta recibido desde searchbar: ' + idReceta);
-        console.log(typeof idReceta);
+        //console.log('idReceta recibido desde searchbar: ' + idReceta);
+        //console.log(typeof idReceta);
         const index = this.state.recetas.findIndex(item => item.id === idReceta );
         this.setState({recetaElegida: index})
-        console.log('Index encontrado: ' + index);
+        //console.log('Index encontrado: ' + index);
     }
     render() {
         return (
-            <div>
-                <header>          
-                    <SearchBar buscarReceta={this.buscarReceta} recetas={this.state.recetas}/>
-                    <Titulo titulo={this.state.recetas[this.state.recetaElegida].nombre} />
-                    <Ingredientes ingredientes={this.state.recetas[this.state.recetaElegida].ingredientes}  />
-                </header>
+            <div class="recetario">          
+                <SearchBar buscarReceta={this.buscarReceta} recetas={this.state.recetas}/>
+                <Titulo titulo={this.state.recetas[this.state.recetaElegida].nombre} />
+                <Ingredientes ingredientes={this.state.recetas[this.state.recetaElegida].ingredientes}  />
             </div>
         );
     }

@@ -1,5 +1,7 @@
 import React from 'react';
 import './searchbar.css';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 class SearchBar extends React.Component {
 	constructor(props){
@@ -9,22 +11,24 @@ class SearchBar extends React.Component {
     		receta: '',
     		value: 1
     	}
-    	this.handleOnChange = this.handleOnChange.bind(this);
-    	this.handleOnClick = this.handleOnClick.bind(this);
+    	this.handleOnSelect = this.handleOnSelect.bind(this);
+    	this.handleSubmit = this.handleSubmit.bind(this);
     	this.renderListadoRecetas = this.renderListadoRecetas.bind(this);
-
   	}
   	renderListadoRecetas(){
   		return this.props.recetas.map( item => { 
-  			return <option key={item.id.toString()} value={item.id}>{item.nombre}</option>;
+  			return <Dropdown.Item key={item.id} eventKey={item.id} onSelect={this.handleOnSelect}>{item.nombre}</Dropdown.Item>
   		});
 	}
 	handleOnChange(event) {
-		this.setState({value: parseInt(event.target.value)});
+		
 	}
-	handleOnClick(event) {
-		event.preventDefault();
+	handleOnSelect(eventKey) {
+		//event.preventDefault();
+		this.setState({value: parseInt(eventKey)}, this.handleSubmit);
 		//console.log('searchbar state value: ' + this.state.value);
+	}
+	handleSubmit() {
 		this.props.buscarReceta(this.state.value);
 	}
 	
@@ -34,10 +38,9 @@ class SearchBar extends React.Component {
 		return(
 			<div className="SearchBar">
 			  <div className="SearchBar-recetas">
-			    <select value={this.state.value} onChange={this.handleOnChange}>
-			    	{this.renderListadoRecetas()}
-			    </select>
-			    <button type="button" onClick={this.handleOnClick}>Mostrar receta</button>
+				 	<DropdownButton id="dropdown-basic-button" title="Elegir receta" >
+				    	{this.renderListadoRecetas()}
+					</DropdownButton>			    
 			  </div>
 			</div>
 		);
